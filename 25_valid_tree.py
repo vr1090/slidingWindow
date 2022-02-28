@@ -24,4 +24,4 @@ def validTree(self, n, edges):
                 return False
         return True
     
-    return dfs(0) and len(visit) == n
+    return dfs(0, -1) and len(visit) == n
