@@ -32,8 +32,4 @@ class Solution:
             
             return True
 
-for n in range(last_index):
-    for m in range(n+1, last_index+1):
-        if data[n] < data[m]:
-            data[n], data[m]= data[m], data[n]
                 
