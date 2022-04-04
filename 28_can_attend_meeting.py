@@ -1,21 +1,31 @@
+from typing import (
+    List,
+)
+from lintcode import (
+    Interval,
+)
+
 """
- @param intervals: an array of meeting time intervals
-@return: if a person could attend all meetings
+Definition of Interval:
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
 """
 
-def can_attend_meetings(self, intervals: List[Interval]) -> bool:
-    intervals.sort(key=lambda x:x.start)
+class Solution:
+    """
+    @param intervals: an array of meeting time intervals
+    @return: if a person could attend all meetings
+    """
+    def can_attend_meetings(self, intervals: List[Interval]) -> bool:
+        intervals.sort(key=lambda x:x.start)
 
-    if len(intervals) == 0 :
+        for i in range(1, len(intervals)):
+            prev = intervals[i-1]
+            cur = intervals[i]
+
+            if prev.end > cur.start:
+                return False
+        
         return True
-
-    lastMeeting = intervals[0]
-
-    for curr in intervals[1:]:
-        if lastMeeting.end > curr.start:
-            return False
-
-        lastMeeting = curr
-
-
-    return True
